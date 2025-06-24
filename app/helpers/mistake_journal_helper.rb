@@ -1,0 +1,2 @@
+module MistakeJournalHelper
+end

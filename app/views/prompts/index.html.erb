@@ -1,0 +1,32 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="max-w-3xl mx-auto">
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-900 mb-2">Speaking Prompts</h1>
+      <p class="text-gray-600">Select a prompt to practice your spoken English grammar</p>
+    </div>
+    
+    <div id="prompts" class="space-y-4">
+      <% if @prompts.present? %>
+        <% @prompts.each do |prompt| %>
+          <%= render partial: 'prompts/prompt', locals: { prompt: prompt } %>
+        <% end %>
+      <% else %>
+        <div class="bg-white rounded-lg shadow-md p-6 text-center">
+          <p class="text-gray-600">No prompts available yet. Please check back later.</p>
+        </div>
+        
+        <%# For development purposes, let's add a sample prompt %>
+        <div class="mt-8 p-4 border border-dashed border-gray-300 rounded-lg">
+          <h3 class="font-medium text-gray-700 mb-2">Development Note</h3>
+          <p class="text-sm text-gray-600 mb-4">No prompts in the database. You can create some using the Rails console:</p>
+          <pre class="bg-gray-100 p-3 rounded text-sm overflow-x-auto">rails c
+Prompt.create!(content: "How long have you been with your company?", category: "Work", difficulty_level: "Beginner")</pre>
+        </div>
+      <% end %>
+    </div>
+    
+    <div class="mt-8">
+      <%= link_to "Back to Home", root_path, class: "text-blue-600 hover:text-blue-800 font-medium" %>
+    </div>
+  </div>
+</div>

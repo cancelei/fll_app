@@ -1,0 +1,2 @@
+class MistakeJournalEntry < ApplicationRecord
+end

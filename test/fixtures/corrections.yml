@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_response: one
+  error_type: MyString
+  mistake: MyString
+  correction: MyString
+  tip: MyText
+
+two:
+  user_response: two
+  error_type: MyString
+  mistake: MyString
+  correction: MyString
+  tip: MyText

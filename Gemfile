@@ -63,3 +63,15 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "tailwindcss-rails", "~> 4.2"
+
+gem "dotenv-rails", "~> 3.1"
+
+gem "ruby-openai", "~> 8.1"
+
+# Pagination
+gem "kaminari", "~> 1.2"
+
+# Authentication
+gem "devise", "~> 4.9"
