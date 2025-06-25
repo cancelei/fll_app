@@ -131,11 +131,11 @@ if sample_prompt
     fluency: "fair",
     overall_feedback: "Good effort! Watch your verb tenses."
   )
-  
+
   # Note: In a real app, we would attach an actual audio file
   # For seeds, we'll skip the audio attachment
   user_response.save(validate: false) # Skip validations since we don't have real audio
-  
+
   # Create a correction for this response
   correction = Correction.create!(
     user_response: user_response,
@@ -144,14 +144,67 @@ if sample_prompt
     correction: "have been working",
     tip: "Use present perfect continuous for ongoing past actions"
   )
-  
-  # Create a mistake journal entry
+
+  # Create mistake journal entries - both current and resolved
+
+  # Current mistakes (unresolved)
   MistakeJournalEntry.create!(
     error_type: "verb-tense",
     mistake: "am work",
-    count: 1
+    count: 3,
+    resolved: false,
+    last_occurrence: 2.days.ago
   )
-  
+
+  MistakeJournalEntry.create!(
+    error_type: "verb-tense",
+    mistake: "I working",
+    count: 2,
+    resolved: false,
+    last_occurrence: 1.day.ago
+  )
+
+  MistakeJournalEntry.create!(
+    error_type: "word-order",
+    mistake: "I like very much coffee",
+    count: 4,
+    resolved: false,
+    last_occurrence: 3.days.ago
+  )
+
+  MistakeJournalEntry.create!(
+    error_type: "subject-verb-agreement",
+    mistake: "The team are working",
+    count: 2,
+    resolved: false,
+    last_occurrence: 5.days.ago
+  )
+
+  # Resolved mistakes
+  MistakeJournalEntry.create!(
+    error_type: "verb-tense",
+    mistake: "I am go",
+    count: 1,
+    resolved: true,
+    last_occurrence: 14.days.ago
+  )
+
+  MistakeJournalEntry.create!(
+    error_type: "word-order",
+    mistake: "Yesterday I went to quickly the store",
+    count: 2,
+    resolved: true,
+    last_occurrence: 10.days.ago
+  )
+
+  MistakeJournalEntry.create!(
+    error_type: "subject-verb-agreement",
+    mistake: "She don't like coffee",
+    count: 3,
+    resolved: true,
+    last_occurrence: 7.days.ago
+  )
+
   puts "Created sample user response with correction"
 end
 

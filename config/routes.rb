@@ -1,22 +1,24 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'registrations' }
+  devise_for :users, controllers: { registrations: "registrations" }
   get "mistake_journal/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Root route
   root "home#index"
-  
+
   # Prompts routes
-  resources :prompts, only: [:index, :show] do
-    resources :user_responses, only: [:new, :create]
+  resources :prompts, only: [ :index, :show ] do
+    resources :user_responses, only: [ :new, :create ]
   end
-  
+
   # User responses routes
-  resources :user_responses, only: [:show, :index]
-  
-  # Mistake journal route
-  get 'mistake_journal', to: 'mistake_journal#index', as: :mistake_journal
-  
+  resources :user_responses, only: [ :show, :index ]
+
+  # Mistake journal routes
+  get "mistake_journal", to: "mistake_journal#index", as: :mistake_journal
+  patch "mistake_journal/:id/mark_resolved", to: "mistake_journal#mark_resolved", as: :mark_mistake_resolved
+  patch "mistake_journal/:id/mark_unresolved", to: "mistake_journal#mark_unresolved", as: :mark_mistake_unresolved
+
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check

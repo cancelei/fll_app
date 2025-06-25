@@ -1,85 +1,79 @@
-<div class="container mx-auto px-4 py-8">
-  <div class="max-w-3xl mx-auto">
-    <div class="mb-8">
-      <h1 class="text-3xl font-bold text-gray-900 mb-2">Mistake Journal</h1>
-      <p class="text-gray-600">Track patterns in your grammar mistakes to focus your learning</p>
+<div class="container mx-auto px-4 py-6 sm:py-8">
+  <div class="max-w-4xl mx-auto">
+    <!-- Header Section -->
+    <div class="mb-6 sm:mb-8">
+      <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Mistake Journal</h1>
+      <p class="text-sm sm:text-base text-gray-600">Track patterns in your grammar mistakes to focus your learning</p>
     </div>
     
-    <% if @mistake_entries_by_type.present? %>
-      <div class="space-y-8">
-        <% @mistake_entries_by_type.each do |error_type, entries| %>
-          <div class="bg-white rounded-lg shadow-md p-6">
-            <h2 class="text-xl font-semibold text-gray-900 mb-4">
-              <%= error_type.humanize %> Mistakes
-              <span class="ml-2 bg-blue-100 text-blue-800 text-sm px-2 py-1 rounded">
-                <%= entries.sum(&:count) %> occurrences
-              </span>
-            </h2>
-            
-            
-            <div class="overflow-x-auto">
-              <table class="table-auto min-w-full divide-y divide-gray-200">
-                <thead>
-                  <tr>
-                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mistakes</th>
-                  </tr>
-                </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
-                  <% entries.each do |entry| %>
-                    <tr>
-                      <td class="px-4 py-3">
-                          <div class="bg-red-100 text-red-800 px-1 rounded py-1 me-1"><span class="px-1"><%= entry.mistake %></span></div>
-                          <div class="flex items-center w-full">
-                          <div class="bg-red-100 flex items-center justify-center mr-2" style="width: 30px; height: 30px; border-radius: 100%;">
-                            <span class="font-bold text-red-800"><%= entry.count %></span>
-                          </div>
-                          <div class="w-full max-w-xs bg-gray-200 rounded-full h-2.5">
-                            <% percentage = (entry.count.to_f / entries.sum(&:count) * 100).round %>
-                            <div class="bg-red-600 h-2.5 rounded-full" style="width: <%= percentage %>%"></div>
-                          </div>
-                          <span class="ml-2 text-sm text-gray-500"><%= percentage %>%</span>
-                        </div>
-                      </td>
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-            </div>
-            
-            <div class="mt-4 p-4 bg-blue-50 rounded-md">
-              <h3 class="font-medium text-gray-900 mb-2">Learning Tips:</h3>
-              <ul class="list-disc pl-5 space-y-1 text-gray-700">
-                <% case error_type %>
-                <% when 'verb-tense' %>
-                  <li>Practice using different tenses in context</li>
-                  <li>Review when to use present perfect vs. simple past</li>
-                  <li>Study continuous vs. simple tense differences</li>
-                <% when 'word-order' %>
-                  <li>Remember: subject + verb + object is the basic English sentence structure</li>
-                  <li>Time expressions usually come at the end of sentences</li>
-                  <li>Adjectives come before the nouns they describe</li>
-                <% when 'subject-verb-agreement' %>
-                  <li>Singular subjects need singular verbs (he works, she studies)</li>
-                  <li>Plural subjects need plural verbs (they work, we study)</li>
-                  <li>Pay attention to irregular verbs and their forms</li>
-                <% else %>
-                  <li>Focus on practicing this type of grammar structure</li>
-                  <li>Consider using grammar practice apps for targeted exercises</li>
-                <% end %>
-              </ul>
-            </div>
-          </div>
-        <% end %>
+    <% if @total_mistakes > 0 %>
+      <!-- Progress Summary -->
+      <%= render partial: 'mistake_journal/partials/progress_summary' %>
+      
+      <!-- Tab Navigation for Mobile -->
+      <div class="sm:hidden mb-6">
+        <select id="mobile-tab-selector" class="block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm" 
+                onchange="showTab(this.value)">
+          <option value="current">Mistakes to Work On (<%= @total_mistakes - @resolved_count %>)</option>
+          <option value="resolved">Resolved Mistakes (<%= @resolved_count %>)</option>
+        </select>
+      </div>
+      
+      <!-- Tab Navigation for Desktop -->
+      <div class="hidden sm:block mb-6">
+        <div class="border-b border-gray-200">
+          <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+            <button onclick="showTab('current')" id="tab-current" class="tab-button border-blue-500 text-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+              Mistakes to Work On (<%= @total_mistakes - @resolved_count %>)
+            </button>
+            <button onclick="showTab('resolved')" id="tab-resolved" class="tab-button border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+              Resolved Mistakes (<%= @resolved_count %>)
+            </button>
+          </nav>
+        </div>
+      </div>
+      
+      <!-- Tab Content -->
+      <div id="tab-content-current" class="tab-content">
+        <%= render partial: 'mistake_journal/partials/current_mistakes' %>
+      </div>
+      
+      <div id="tab-content-resolved" class="tab-content hidden">
+        <%= render partial: 'mistake_journal/partials/resolved_mistakes' %>
       </div>
     <% else %>
-      <div class="bg-white rounded-lg shadow-md p-6 text-center">
-        <p class="text-gray-600 mb-4">No grammar mistakes have been recorded yet.</p>
-        <%= link_to "Start Speaking Practice", prompts_path, class: "bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-300" %>
-      </div>
+      <!-- Empty State -->
+      <%= render partial: 'mistake_journal/partials/empty_state' %>
     <% end %>
     
+    <!-- Footer Navigation -->
     <div class="mt-8">
-      <%= link_to "Back to Home", root_path, class: "text-blue-600 hover:text-blue-800 font-medium" %>
+      <%= link_to "Back to Home", root_path, class: "text-blue-600 hover:text-blue-800 font-medium text-sm sm:text-base" %>
     </div>
   </div>
 </div>
+
+<!-- JavaScript for Tab Switching -->
+<script>
+  function showTab(tabId) {
+    // Hide all tab contents
+    document.querySelectorAll('.tab-content').forEach(tab => {
+      tab.classList.add('hidden');
+    });
+    
+    // Show selected tab content
+    document.getElementById('tab-content-' + tabId).classList.remove('hidden');
+    
+    // Update tab button styles (desktop only)
+    document.querySelectorAll('.tab-button').forEach(button => {
+      button.classList.remove('border-blue-500', 'text-blue-600');
+      button.classList.add('border-transparent', 'text-gray-500');
+    });
+    
+    document.getElementById('tab-' + tabId).classList.remove('border-transparent', 'text-gray-500');
+    document.getElementById('tab-' + tabId).classList.add('border-blue-500', 'text-blue-600');
+    
+    // Update mobile selector
+    document.getElementById('mobile-tab-selector').value = tabId;
+  }
+</script>

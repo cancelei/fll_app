@@ -1,0 +1,19 @@
+<div class="bg-white rounded-lg shadow-md p-6 mb-8">
+  <h2 class="text-xl font-semibold text-gray-900 mb-4">Your Progress</h2>
+  
+  <div class="flex items-center mb-4">
+    <div class="w-full bg-gray-200 rounded-full h-4">
+      <div class="bg-green-600 h-4 rounded-full" style="width: <%= @progress_percentage %>%"></div>
+    </div>
+    <span class="ml-3 text-lg font-medium"><%= @progress_percentage %>%</span>
+  </div>
+  
+  <div class="flex justify-between text-sm text-gray-600">
+    <div>
+      <span class="font-medium text-green-600"><%= @resolved_count %></span> mistakes resolved
+    </div>
+    <div>
+      <span class="font-medium text-red-600"><%= @total_mistakes - @resolved_count %></span> mistakes to work on
+    </div>
+  </div>
+</div>
