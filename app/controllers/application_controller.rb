@@ -21,11 +21,11 @@ class ApplicationController < ActionController::Base
     # 5. Default locale
     I18n.locale = if params[:locale].present? && I18n.available_locales.map(&:to_s).include?(params[:locale])
                     params[:locale]
-                  elsif user_signed_in? && current_user.interface_language.present?
+    elsif user_signed_in? && current_user.interface_language.present?
                     current_user.language_to_locale(current_user.interface_language)
-                  else
+    else
                     locale_from_http_header || locale_from_ip || I18n.default_locale
-                  end
+    end
   end
 
   def locale_from_http_header

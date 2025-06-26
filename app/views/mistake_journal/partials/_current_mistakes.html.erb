@@ -5,7 +5,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
         </svg>
-        Mistakes to Work On
+        <%= t('mistake_journal.mistakes_to_work_on') %>
       </div>
     </h2>
     
@@ -13,9 +13,9 @@
       <% @current_mistakes.each do |error_type, entries| %>
         <div class="border-t pt-4">
           <h3 class="text-lg font-medium text-gray-900 mb-3">
-            <%= error_type.humanize %> Mistakes
+            <%= t('mistake_journal.error_type_mistakes', type: error_type.humanize) %>
             <span class="ml-2 bg-red-100 text-red-800 text-sm px-2 py-1 rounded">
-              <%= entries.sum(&:count) %> occurrences
+              <%= t('mistake_journal.occurrences_count', count: entries.sum(&:count)) %>
             </span>
           </h3>
           
@@ -26,9 +26,9 @@
                   <div>
                     <div class="text-red-600 font-medium mb-1"><%= entry.mistake %></div>
                     <div class="text-sm text-gray-600">
-                      Occurred <%= entry.count %> times
+                      <%= t('mistake_journal.occurred_times', count: entry.count) %>
                       <% if entry.last_occurrence %>
-                        · Last seen <%= time_ago_in_words(entry.last_occurrence) %> ago
+                        · <%= t('mistake_journal.last_seen_ago', time: time_ago_in_words(entry.last_occurrence)) %>
                       <% end %>
                     </div>
                   </div>
@@ -38,7 +38,7 @@
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
-                      Mark Resolved
+                      <%= t('mistake_journal.mark_resolved') %>
                     </div>
                   <% end %>
                 </div>
@@ -54,24 +54,24 @@
           </div>
           
           <div class="mt-4 p-4 bg-blue-50 rounded-md">
-            <h4 class="font-medium text-gray-900 mb-2">Learning Tips:</h4>
+            <h4 class="font-medium text-gray-900 mb-2"><%= t('mistake_journal.learning_tips') %>:</h4>
             <ul class="list-disc pl-5 space-y-1 text-gray-700">
               <% case error_type %>
               <% when 'verb-tense' %>
-                <li>Practice using different tenses in context</li>
-                <li>Review when to use present perfect vs. simple past</li>
-                <li>Study continuous vs. simple tense differences</li>
+                <li><%= t('mistake_journal.tips.verb_tense.practice') %></li>
+                <li><%= t('mistake_journal.tips.verb_tense.review') %></li>
+                <li><%= t('mistake_journal.tips.verb_tense.study') %></li>
               <% when 'word-order' %>
-                <li>Remember: subject + verb + object is the basic English sentence structure</li>
-                <li>Time expressions usually come at the end of sentences</li>
-                <li>Adjectives come before the nouns they describe</li>
+                <li><%= t('mistake_journal.tips.word_order.structure') %></li>
+                <li><%= t('mistake_journal.tips.word_order.time_expressions') %></li>
+                <li><%= t('mistake_journal.tips.word_order.adjectives') %></li>
               <% when 'subject-verb-agreement' %>
-                <li>Singular subjects need singular verbs (he works, she studies)</li>
-                <li>Plural subjects need plural verbs (they work, we study)</li>
-                <li>Pay attention to irregular verbs and their forms</li>
+                <li><%= t('mistake_journal.tips.subject_verb_agreement.singular') %></li>
+                <li><%= t('mistake_journal.tips.subject_verb_agreement.plural') %></li>
+                <li><%= t('mistake_journal.tips.subject_verb_agreement.irregular') %></li>
               <% else %>
-                <li>Focus on practicing this type of grammar structure</li>
-                <li>Consider using grammar practice apps for targeted exercises</li>
+                <li><%= t('mistake_journal.tips.default.practice') %></li>
+                <li><%= t('mistake_journal.tips.default.apps') %></li>
               <% end %>
             </ul>
           </div>

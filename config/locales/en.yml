@@ -30,10 +30,34 @@
 en:
   hello: "Hello world"
   
+  time:
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+  
   # Application-wide translations
   app:
     title: "English Grammar Feedback"
     footer_text: "Built with Ruby on Rails, Hotwire, and Tailwind CSS"
+    meta_description: "Practice your spoken English and get instant grammar feedback"
+    
+  # Home page specific translations
+  home:
+    title: "Spoken English Grammar Feedback"
+    subtitle: "Practice speaking English and get instant grammar feedback"
+    how_it_works: "How it works:"
+    step1: "Select a speaking prompt"
+    step2: "Record your spoken response"
+    step3: "Get instant grammar feedback"
+    step4: "Track your progress over time"
+    start_practice: "Start Speaking Practice"
+    history_title: "Your History"
+    history_description: "View your previous speaking attempts and track your improvement over time."
+    view_history: "View History"
+    journal_title: "Mistake Journal"
+    journal_description: "See patterns in your grammar mistakes and focus on areas that need improvement."
+    view_journal: "View Mistake Journal"
   
   # Common elements used throughout the application
   common:
@@ -54,6 +78,7 @@ en:
     previous: "Previous"
     next: "Next"
     or: "Or"
+    fix_errors: "Please fix the following errors:"
   
   # Navigation
   nav:
@@ -66,10 +91,12 @@ en:
     mistake_journal: "Mistake Journal"
     journal_short: "Journal"
     profile: "Edit Profile"
+    edit_profile: "Edit Profile"
     preferences: "Learning Preferences"
     sign_in: "Sign in"
     sign_up: "Sign up"
     sign_out: "Sign out"
+    notifications_count: "%{count} Notifications"
   
   # User Preferences
   user_preferences:
@@ -111,16 +138,20 @@ en:
     difficulty: "Difficulty"
     dev_note_title: "Development Note"
     dev_note_description: "No prompts in the database. You can create some using the Rails console:"
+    show_title: "Speaking Prompt"
+    show_description: "Practice your spoken English with this prompt"
+    prompt_label: "Prompt:"
+    back_to_prompts: "Back to Prompts"
+    start_practice: "Start Speaking Practice"
     
   # User Responses
   user_responses:
-    title: "Practice History"
-    description: "Review your speaking practice history and grammar feedback"
-    empty_state: "You haven't completed any speaking practice yet."
-    start_practicing: "Start Speaking Practice"
-    view_details: "View Details"
+    title: "Speaking History"
+    description: "Review your previous speaking attempts and track your progress"
+    empty: "You haven't recorded any speaking responses yet."
+    start_practicing: "Start Practicing"
     grammar_feedback: "Grammar Feedback"
-    review_description: "Review your speaking response and grammar corrections"
+    review_description: "Review your speaking attempt and grammar corrections"
     prompt: "Prompt"
     audio_response: "Your Audio Response"
     audio_not_supported: "Your browser does not support the audio element."
@@ -128,16 +159,23 @@ en:
     transcript: "Transcript"
     no_transcript: "No transcript available"
     grammar_score: "Grammar Score"
-    not_available: "N/A"
     fluency: "Fluency"
+    not_available: "N/A"
     not_rated: "Not rated"
     grammar_corrections: "Grammar Corrections"
-    no_corrections: "No grammar corrections needed"
+    no_corrections: "No grammar corrections needed - great job!"
     overall_feedback: "Overall Feedback"
     try_another: "Try Another Prompt"
     view_history: "View History"
-    your_response: "Your Response"
-    feedback: "Feedback"
+    view_details: "View Details"
+    corrections: "Corrections"
+    record_title: "Record Your Response"
+    record_description: "Speak your answer to the prompt below"
+    start_recording: "Start Recording"
+    stop_recording: "Stop Recording"
+    recording_instructions: "Click 'Start Recording' to begin speaking"
+    submit_response: "Submit Response"
+    back_to_prompts: "Back to Prompts"
     retry: "Try Again"
     corrections: "Corrections"
     
@@ -155,9 +193,31 @@ en:
     resolved_mistakes: "Resolved Mistakes"
     no_mistakes: "No Grammar Mistakes Recorded Yet"
     start_practicing_description: "Start practicing with speaking exercises to track your grammar mistakes and progress."
-    mark_resolved: "Mark as resolved"
-    mark_unresolved: "Mark as unresolved"
-    occurrence_count: "Occurrences"
+    mark_resolved: "Mark Resolved"
+    still_an_issue: "Still an issue?"
+    mistakes_to_work_on: "Mistakes to Work On"
+    error_type_mistakes: "%{type} Mistakes"
+    occurrences_count: "%{count} occurrences"
+    resolved_count: "%{count} resolved"
+    occurred_times: "Occurred %{count} times"
+    last_seen_ago: "Last seen %{time} ago"
+    learning_tips: "Learning Tips"
+    tips:
+      verb_tense:
+        practice: "Practice using different tenses in context"
+        review: "Review when to use present perfect vs. simple past"
+        study: "Study continuous vs. simple tense differences"
+      word_order:
+        structure: "Remember: subject + verb + object is the basic English sentence structure"
+        time_expressions: "Time expressions usually come at the end of sentences"
+        adjectives: "Adjectives come before the nouns they describe"
+      subject_verb_agreement:
+        singular: "Singular subjects need singular verbs (he works, she studies)"
+        plural: "Plural subjects need plural verbs (they work, we study)"
+        irregular: "Pay attention to irregular verbs and their forms"
+      default:
+        practice: "Focus on practicing this type of grammar structure"
+        apps: "Consider using grammar practice apps for targeted exercises"
     
   # Grammar Feedback
   grammar:

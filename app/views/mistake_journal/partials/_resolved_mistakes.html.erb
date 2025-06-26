@@ -5,7 +5,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        Resolved Mistakes
+        <%= t('mistake_journal.resolved_mistakes') %>
       </div>
     </h2>
     
@@ -13,9 +13,9 @@
       <% @resolved_mistakes.each do |error_type, entries| %>
         <div class="border-t pt-4">
           <h3 class="text-lg font-medium text-gray-900 mb-3">
-            <%= error_type.humanize %> Mistakes
+            <%= t('mistake_journal.error_type_mistakes', type: error_type.humanize) %>
             <span class="ml-2 bg-green-100 text-green-800 text-sm px-2 py-1 rounded">
-              <%= entries.count %> resolved
+              <%= t('mistake_journal.resolved_count', count: entries.count) %>
             </span>
           </h3>
           
@@ -28,7 +28,7 @@
                       <span class="line-through"><%= entry.mistake %></span>
                     </div>
                     <div class="text-sm text-gray-500">
-                      Occurred <%= entry.count %> times
+                      <%= t('mistake_journal.occurred_times', count: entry.count) %>
                     </div>
                   </div>
                   
@@ -37,7 +37,7 @@
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                       </svg>
-                      Still an issue?
+                      <%= t('mistake_journal.still_an_issue') %>
                     </div>
                   <% end %>
                 </div>

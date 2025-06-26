@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="description" content="Practice your spoken English and get instant grammar feedback">
+    <meta name="description" content="<%= t('app.meta_description') %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -138,10 +138,10 @@
             </div>
             <div class="mt-3 flex justify-between">
               <%= link_to edit_user_registration_path, class: "text-sm text-blue-600" do %>
-                <i class="fas fa-user-edit mr-1"></i> Edit Profile
+                <i class="fas fa-user-edit mr-1"></i> <%= t('nav.edit_profile') %>
               <% end %>
               <span class="text-sm text-gray-500">
-                <i class="fas fa-bell mr-1"></i> 0 Notifications
+                <i class="fas fa-bell mr-1"></i> <%= t('nav.notifications_count', count: 0) %>
               </span>
             </div>
           </div>

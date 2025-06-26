@@ -1,12 +1,12 @@
 <div class="container mx-auto px-4 py-8">
   <div class="max-w-3xl mx-auto">
     <div class="mb-8">
-      <h1 class="text-3xl font-bold text-gray-900 mb-2">Record Your Response</h1>
-      <p class="text-gray-600">Speak your answer to the prompt below</p>
+      <h1 class="text-3xl font-bold text-gray-900 mb-2"><%= t('user_responses.record_title') %></h1>
+      <p class="text-gray-600"><%= t('user_responses.record_description') %></p>
     </div>
     
     <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-      <h2 class="text-xl font-semibold mb-4">Prompt:</h2>
+      <h2 class="text-xl font-semibold mb-4"><%= t('user_responses.prompt') %>:</h2>
       <div class="p-4 bg-blue-50 rounded-md mb-6">
         <p class="text-lg"><%= @prompt.content %></p>
         <div class="mt-2 flex items-center space-x-3 text-sm text-gray-500">
@@ -22,31 +22,31 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <circle cx="10" cy="10" r="6" />
               </svg>
-              Start Recording
+              <%= t('user_responses.start_recording') %>
             </button>
             
             <button data-action="click->recording#stopRecording" data-recording-target="stopButton" class="bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-md transition duration-300 flex items-center" disabled>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <rect x="6" y="6" width="8" height="8" />
               </svg>
-              Stop Recording
+              <%= t('user_responses.stop_recording') %>
             </button>
           </div>
           
-          <p data-recording-target="status" class="text-gray-600">Click 'Start Recording' to begin speaking</p>
+          <p data-recording-target="status" class="text-gray-600"><%= t('user_responses.recording_instructions') %></p>
         </div>
         
         <audio data-recording-target="audioPlayer" controls class="w-full mt-4" hidden></audio>
         
         <%= form_with(url: prompt_user_responses_path(@prompt), method: :post, data: { action: "submit->recording#submitForm" }) do |form| %>
           <%= form.hidden_field :audio_data, data: { recording_target: "audioData" } %>
-          <%= form.submit "Submit Response", class: "mt-6 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-md transition duration-300" %>
+          <%= form.submit t('user_responses.submit_response'), class: "mt-6 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-md transition duration-300" %>
         <% end %>
       </div>
     </div>
     
     <div class="mt-8">
-      <%= link_to "Back to Prompts", prompts_path, class: "text-blue-600 hover:text-blue-800 font-medium" %>
+      <%= link_to t('user_responses.back_to_prompts'), prompts_path, class: "text-blue-600 hover:text-blue-800 font-medium" %>
     </div>
   </div>
 </div>

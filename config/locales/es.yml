@@ -1,10 +1,34 @@
 es:
   hello: "¡Hola mundo!"
   
+  time:
+    formats:
+      default: "%A, %d de %B de %Y %H:%M:%S %z"
+      short: "%d %b %H:%M"
+      long: "%d de %B de %Y %H:%M"
+  
   # Application-wide translations
   app:
     title: "Retroalimentación de Gramática Inglesa"
     footer_text: "Construido con Ruby on Rails, Hotwire y Tailwind CSS"
+    meta_description: "Practica tu inglés hablado y obtén retroalimentación gramatical instantánea"
+    
+  # Home page specific translations
+  home:
+    title: "Retroalimentación de Gramática Inglesa Hablada"
+    subtitle: "Practica hablar inglés y obtén retroalimentación gramatical instantánea"
+    how_it_works: "Cómo funciona:"
+    step1: "Selecciona un ejercicio de habla"
+    step2: "Graba tu respuesta hablada"
+    step3: "Obtén retroalimentación gramatical instantánea"
+    step4: "Haz seguimiento de tu progreso a lo largo del tiempo"
+    start_practice: "Comenzar Práctica de Habla"
+    history_title: "Tu Historial"
+    history_description: "Visualiza tus intentos anteriores de habla y sigue tu mejora a lo largo del tiempo."
+    view_history: "Ver Historial"
+    journal_title: "Diario de Errores"
+    journal_description: "Observa patrones en tus errores gramaticales y concéntrate en áreas que necesitan mejora."
+    view_journal: "Ver Diario de Errores"
   
   # Common elements used throughout the application
   common:
@@ -25,6 +49,7 @@ es:
     previous: "Anterior"
     next: "Siguiente"
     or: "O"
+    fix_errors: "Por favor, corrija los siguientes errores:"
   
   # Navigation
   nav:
@@ -37,10 +62,12 @@ es:
     mistake_journal: "Diario de Errores"
     journal_short: "Diario"
     profile: "Editar Perfil"
+    edit_profile: "Editar Perfil"
     preferences: "Preferencias de Aprendizaje"
     sign_in: "Iniciar Sesión"
     sign_up: "Registrarse"
     sign_out: "Cerrar Sesión"
+    notifications_count: "%{count} Notificaciones"
   
   # User Preferences
   user_preferences:
@@ -82,33 +109,44 @@ es:
     difficulty: "Dificultad"
     dev_note_title: "Nota de Desarrollo"
     dev_note_description: "No hay ejercicios en la base de datos. Puedes crear algunos usando la consola de Rails:"
+    show_title: "Ejercicio de Habla"
+    show_description: "Practica tu inglés hablado con este ejercicio"
+    prompt_label: "Ejercicio:"
+    back_to_prompts: "Volver a Ejercicios"
+    start_practice: "Comenzar Práctica de Habla"
     
   # User Responses
   user_responses:
-    title: "Historial de Práctica"
-    description: "Revisa tu historial de práctica de conversación y retroalimentación gramatical"
-    empty_state: "Aún no has completado ninguna práctica de conversación."
-    start_practicing: "Comenzar Práctica de Conversación"
-    view_details: "Ver Detalles"
+    title: "Historial de Habla"
+    description: "Revisa tus intentos anteriores de habla y sigue tu progreso"
+    empty: "Aún no has grabado ninguna respuesta hablada."
+    start_practicing: "Comenzar a Practicar"
     grammar_feedback: "Retroalimentación Gramatical"
-    review_description: "Revisa tu respuesta hablada y las correcciones gramaticales"
-    prompt: "Consigna"
+    review_description: "Revisa tu intento de habla y las correcciones gramaticales"
+    prompt: "Ejercicio"
     audio_response: "Tu Respuesta de Audio"
     audio_not_supported: "Tu navegador no soporta el elemento de audio."
     no_audio: "No hay grabación de audio disponible"
     transcript: "Transcripción"
     no_transcript: "No hay transcripción disponible"
     grammar_score: "Puntuación Gramatical"
-    not_available: "N/D"
     fluency: "Fluidez"
+    not_available: "N/D"
     not_rated: "Sin calificar"
     grammar_corrections: "Correcciones Gramaticales"
-    no_corrections: "No se necesitan correcciones gramaticales"
+    no_corrections: "No se necesitan correcciones gramaticales - ¡buen trabajo!"
     overall_feedback: "Retroalimentación General"
-    try_another: "Probar Otra Consigna"
+    try_another: "Probar Otro Ejercicio"
     view_history: "Ver Historial"
-    your_response: "Tu Respuesta"
+    view_details: "Ver Detalles"
     corrections: "Correcciones"
+    record_title: "Graba tu Respuesta"
+    record_description: "Habla tu respuesta al ejercicio de abajo"
+    start_recording: "Comenzar Grabación"
+    stop_recording: "Detener Grabación"
+    recording_instructions: "Haz clic en 'Comenzar Grabación' para empezar a hablar"
+    submit_response: "Enviar Respuesta"
+    back_to_prompts: "Volver a Ejercicios"
     feedback: "Retroalimentación"
     retry: "Intentar de Nuevo"
     
@@ -126,9 +164,31 @@ es:
     resolved_mistakes: "Errores Resueltos"
     no_mistakes: "Aún no hay errores gramaticales registrados"
     start_practicing_description: "Comienza a practicar con ejercicios de habla para rastrear tus errores gramaticales y tu progreso."
-    mark_resolved: "Marcar como resuelto"
-    mark_unresolved: "Marcar como no resuelto"
-    occurrence_count: "Ocurrencias"
+    mark_resolved: "Marcar Resuelto"
+    still_an_issue: "¿Todavía es un problema?"
+    mistakes_to_work_on: "Errores para Trabajar"
+    error_type_mistakes: "Errores de %{type}"
+    occurrences_count: "%{count} ocurrencias"
+    resolved_count: "%{count} resueltos"
+    occurred_times: "Ocurrió %{count} veces"
+    last_seen_ago: "Visto por última vez hace %{time}"
+    learning_tips: "Consejos de Aprendizaje"
+    tips:
+      verb_tense:
+        practice: "Practica usando diferentes tiempos verbales en contexto"
+        review: "Repasa cuándo usar el presente perfecto vs. el pasado simple"
+        study: "Estudia las diferencias entre tiempos continuos y simples"
+      word_order:
+        structure: "Recuerda: sujeto + verbo + objeto es la estructura básica de la oración en inglés"
+        time_expressions: "Las expresiones de tiempo generalmente van al final de las oraciones"
+        adjectives: "Los adjetivos van antes de los sustantivos que describen"
+      subject_verb_agreement:
+        singular: "Los sujetos singulares necesitan verbos singulares (he works, she studies)"
+        plural: "Los sujetos plurales necesitan verbos plurales (they work, we study)"
+        irregular: "Presta atención a los verbos irregulares y sus formas"
+      default:
+        practice: "Concéntrate en practicar este tipo de estructura gramatical"
+        apps: "Considera usar aplicaciones de práctica gramatical para ejercicios específicos"
     
   # Grammar Feedback
   grammar:

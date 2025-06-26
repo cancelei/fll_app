@@ -1,35 +1,35 @@
 <div class="container mx-auto px-4 py-8">
   <div class="max-w-3xl mx-auto">
     <div class="text-center mb-12">
-      <h1 class="text-3xl font-bold text-gray-900 mb-4">Spoken English Grammar Feedback</h1>
-      <p class="text-lg text-gray-600">Practice speaking English and get instant grammar feedback</p>
+      <h1 class="text-3xl font-bold text-gray-900 mb-4"><%= t('home.title') %></h1>
+      <p class="text-lg text-gray-600"><%= t('home.subtitle') %></p>
     </div>
     
     <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-      <h2 class="text-xl font-semibold mb-4">How it works:</h2>
+      <h2 class="text-xl font-semibold mb-4"><%= t('home.how_it_works') %></h2>
       <ol class="list-decimal pl-6 space-y-2">
-        <li>Select a speaking prompt</li>
-        <li>Record your spoken response</li>
-        <li>Get instant grammar feedback</li>
-        <li>Track your progress over time</li>
+        <li><%= t('home.step1') %></li>
+        <li><%= t('home.step2') %></li>
+        <li><%= t('home.step3') %></li>
+        <li><%= t('home.step4') %></li>
       </ol>
       
       <div class="mt-6 flex justify-center">
-        <%= link_to "Start Speaking Practice", prompts_path, class: "bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-md transition duration-300" %>
+        <%= link_to t('home.start_practice'), prompts_path, class: "bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-md transition duration-300" %>
       </div>
     </div>
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div class="bg-white rounded-lg shadow-md p-6">
-        <h2 class="text-xl font-semibold mb-4">Your History</h2>
-        <p class="text-gray-600 mb-4">View your previous speaking attempts and track your improvement over time.</p>
-        <%= link_to "View History", user_responses_path, class: "text-blue-600 hover:text-blue-800 font-medium" %>
+        <h2 class="text-xl font-semibold mb-4"><%= t('home.history_title') %></h2>
+        <p class="text-gray-600 mb-4"><%= t('home.history_description') %></p>
+        <%= link_to t('home.view_history'), user_responses_path, class: "text-blue-600 hover:text-blue-800 font-medium" %>
       </div>
       
       <div class="bg-white rounded-lg shadow-md p-6">
-        <h2 class="text-xl font-semibold mb-4">Mistake Journal</h2>
-        <p class="text-gray-600 mb-4">See patterns in your grammar mistakes and focus on areas that need improvement.</p>
-        <%= link_to "View Mistake Journal", mistake_journal_path, class: "text-blue-600 hover:text-blue-800 font-medium" %>
+        <h2 class="text-xl font-semibold mb-4"><%= t('home.journal_title') %></h2>
+        <p class="text-gray-600 mb-4"><%= t('home.journal_description') %></p>
+        <%= link_to t('home.view_journal'), mistake_journal_path, class: "text-blue-600 hover:text-blue-800 font-medium" %>
       </div>
     </div>
   </div>

@@ -5,7 +5,7 @@
     <%= form_with(model: @user, url: update_user_preferences_path, method: :patch, class: "space-y-6") do |f| %>
       <% if @user.errors.any? %>
         <div class="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 mb-4">
-          <h2 class="font-bold">Please fix the following errors:</h2>
+          <h2 class="font-bold"><%= t('common.fix_errors') %></h2>
           <ul class="list-disc ml-5">
             <% @user.errors.full_messages.each do |message| %>
               <li><%= message %></li>

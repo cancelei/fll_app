@@ -1,10 +1,34 @@
 de:
   hello: "Hallo Welt"
   
+  time:
+    formats:
+      default: "%A, %d. %B %Y %H:%M:%S %z"
+      short: "%d. %b %H:%M"
+      long: "%d. %B %Y %H:%M"
+  
   # Application-wide translations
   app:
     title: "Englische Grammatik-Feedback"
     footer_text: "Erstellt mit Ruby on Rails, Hotwire und Tailwind CSS"
+    meta_description: "Übe dein gesprochenes Englisch und erhalte sofortiges Grammatik-Feedback"
+    
+  # Home page specific translations
+  home:
+    title: "Gesprochenes Englisch Grammatik-Feedback"
+    subtitle: "Übe Englisch zu sprechen und erhalte sofortiges Grammatik-Feedback"
+    how_it_works: "So funktioniert es:"
+    step1: "Wähle eine Sprechübung aus"
+    step2: "Nimm deine gesprochene Antwort auf"
+    step3: "Erhalte sofortiges Grammatik-Feedback"
+    step4: "Verfolge deinen Fortschritt im Laufe der Zeit"
+    start_practice: "Sprechübung beginnen"
+    history_title: "Dein Verlauf"
+    history_description: "Sieh dir deine früheren Sprechversuche an und verfolge deine Verbesserung im Laufe der Zeit."
+    view_history: "Verlauf anzeigen"
+    journal_title: "Fehlerjournal"
+    journal_description: "Erkenne Muster in deinen Grammatikfehlern und konzentriere dich auf Bereiche, die Verbesserung benötigen."
+    view_journal: "Fehlerjournal anzeigen"
   
   # Common elements used throughout the application
   common:
@@ -24,6 +48,7 @@ de:
     optional: "Optional"
     previous: "Zurück"
     next: "Weiter"
+    fix_errors: "Bitte beheben Sie die folgenden Fehler:"
   
   # Navigation
   nav:
@@ -36,10 +61,12 @@ de:
     mistake_journal: "Fehlerjournal"
     journal_short: "Journal"
     profile: "Profil bearbeiten"
+    edit_profile: "Profil bearbeiten"
     preferences: "Lerneinstellungen"
     sign_in: "Anmelden"
     sign_up: "Registrieren"
     sign_out: "Abmelden"
+    notifications_count: "%{count} Benachrichtigungen"
   
   # User Preferences
   user_preferences:
@@ -81,34 +108,44 @@ de:
     difficulty: "Schwierigkeitsgrad"
     dev_note_title: "Entwicklungshinweis"
     dev_note_description: "Keine Übungen in der Datenbank. Sie können einige mit der Rails-Konsole erstellen:"
+    show_title: "Sprechübung"
+    show_description: "Trainieren Sie Ihr gesprochenes Englisch mit dieser Übung"
+    prompt_label: "Übung:"
+    back_to_prompts: "Zurück zu Übungen"
+    start_practice: "Sprechübung beginnen"
     
   # User Responses
   user_responses:
-    title: "Übungshistorie"
-    description: "Überprüfen Sie Ihre Sprechübungshistorie und Grammatik-Feedback"
-    empty_state: "Sie haben noch keine Sprechübung abgeschlossen."
-    start_practicing: "Sprechübung beginnen"
-    view_details: "Details anzeigen"
+    title: "Sprechhistorie"
+    description: "Überprüfen Sie Ihre früheren Sprechversuche und verfolgen Sie Ihren Fortschritt"
+    empty: "Sie haben noch keine Sprechantworten aufgenommen."
+    start_practicing: "Mit dem Üben beginnen"
     grammar_feedback: "Grammatik-Feedback"
-    review_description: "Überprüfen Sie Ihre gesprochene Antwort und Grammatikkorrekturen"
-    prompt: "Aufgabe"
+    review_description: "Überprüfen Sie Ihren Sprechversuch und die Grammatikkorrekturen"
+    prompt: "Übung"
     audio_response: "Ihre Audio-Antwort"
     audio_not_supported: "Ihr Browser unterstützt das Audio-Element nicht."
     no_audio: "Keine Audioaufnahme verfügbar"
     transcript: "Transkript"
     no_transcript: "Kein Transkript verfügbar"
     grammar_score: "Grammatikpunktzahl"
-    not_available: "N/V"
     fluency: "Flüssigkeit"
+    not_available: "N/V"
     not_rated: "Nicht bewertet"
     grammar_corrections: "Grammatikkorrekturen"
-    no_corrections: "Keine Grammatikkorrekturen erforderlich"
+    no_corrections: "Keine Grammatikkorrekturen erforderlich - gut gemacht!"
     overall_feedback: "Gesamtfeedback"
-    try_another: "Andere Aufgabe versuchen"
+    try_another: "Andere Übung versuchen"
     view_history: "Historie anzeigen"
-    your_response: "Ihre Antwort"
+    view_details: "Details anzeigen"
     corrections: "Korrekturen"
-    feedback: "Feedback"
+    record_title: "Nehmen Sie Ihre Antwort auf"
+    record_description: "Sprechen Sie Ihre Antwort auf die übung unten"
+    start_recording: "Aufnahme starten"
+    stop_recording: "Aufnahme stoppen"
+    recording_instructions: "Klicken Sie auf 'Aufnahme starten', um zu sprechen"
+    submit_response: "Antwort absenden"
+    back_to_prompts: "Zurück zu Übungen"
     retry: "Erneut versuchen"
     
   # Corrections
@@ -126,8 +163,30 @@ de:
     no_mistakes: "Noch keine Grammatikfehler aufgezeichnet"
     start_practicing_description: "Beginne mit Sprechübungen, um deine Grammatikfehler und deinen Fortschritt zu verfolgen."
     mark_resolved: "Als behoben markieren"
-    mark_unresolved: "Als nicht behoben markieren"
-    occurrence_count: "Vorkommen"
+    still_an_issue: "Immer noch ein Problem?"
+    mistakes_to_work_on: "Fehler zum Bearbeiten"
+    error_type_mistakes: "%{type}-Fehler"
+    occurrences_count: "%{count} Vorkommen"
+    resolved_count: "%{count} behoben"
+    occurred_times: "Kam %{count} mal vor"
+    last_seen_ago: "Zuletzt gesehen vor %{time}"
+    learning_tips: "Lerntipps"
+    tips:
+      verb_tense:
+        practice: "Übe die Verwendung verschiedener Zeitformen im Kontext"
+        review: "Wiederhole, wann man Present Perfect vs. Simple Past verwendet"
+        study: "Studiere die Unterschiede zwischen kontinuierlichen und einfachen Zeitformen"
+      word_order:
+        structure: "Merke dir: Subjekt + Verb + Objekt ist die grundlegende englische Satzstruktur"
+        time_expressions: "Zeitausdrücke stehen normalerweise am Ende des Satzes"
+        adjectives: "Adjektive stehen vor den Substantiven, die sie beschreiben"
+      subject_verb_agreement:
+        singular: "Singularsubjekte benötigen Singularverben (he works, she studies)"
+        plural: "Pluralsubjekte benötigen Pluralverben (they work, we study)"
+        irregular: "Achte auf unregelmäßige Verben und ihre Formen"
+      default:
+        practice: "Konzentriere dich auf das Üben dieser Art von grammatikalischer Struktur"
+        apps: "Erwäge die Verwendung von Grammatik-Übungs-Apps für gezielte Übungen"
     
   # Grammar Feedback
   grammar:

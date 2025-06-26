@@ -1,12 +1,12 @@
 <div class="container mx-auto px-4 py-8">
   <div class="max-w-3xl mx-auto">
     <div class="mb-8">
-      <h1 class="text-3xl font-bold text-gray-900 mb-2">Speaking Prompt</h1>
-      <p class="text-gray-600">Practice your spoken English with this prompt</p>
+      <h1 class="text-3xl font-bold text-gray-900 mb-2"><%= t('prompts.show_title') %></h1>
+      <p class="text-gray-600"><%= t('prompts.show_description') %></p>
     </div>
     
     <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-      <h2 class="text-xl font-semibold mb-4">Prompt:</h2>
+      <h2 class="text-xl font-semibold mb-4"><%= t('prompts.prompt_label') %></h2>
       <div class="p-4 bg-blue-50 rounded-md mb-6">
         <p class="text-lg"><%= @prompt.content %></p>
         <div class="mt-2 flex items-center space-x-3 text-sm text-gray-500">
@@ -16,12 +16,12 @@
       </div>
       
       <div class="mt-6">
-        <%= link_to "Start Speaking Practice", new_prompt_user_response_path(@prompt), class: "bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-md transition duration-300" %>
+        <%= link_to t('prompts.start_practice'), new_prompt_user_response_path(@prompt), class: "bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-md transition duration-300" %>
       </div>
     </div>
     
     <div class="mt-8">
-      <%= link_to "Back to Prompts", prompts_path, class: "text-blue-600 hover:text-blue-800 font-medium" %>
+      <%= link_to t('prompts.back_to_prompts'), prompts_path, class: "text-blue-600 hover:text-blue-800 font-medium" %>
     </div>
   </div>
 </div>
