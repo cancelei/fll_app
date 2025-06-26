@@ -5,14 +5,27 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :store_user_location!, if: :storable_location?
 
+  # Set default URL options to include locale
+  def default_url_options
+    { locale: I18n.locale }
+  end
+
   private
 
   def set_locale
-    I18n.locale = if user_signed_in? && current_user.interface_language.present?
+    # Priority order for locale:
+    # 1. URL parameter
+    # 2. User preference (if signed in)
+    # 3. Browser Accept-Language header
+    # 4. IP-based geolocation
+    # 5. Default locale
+    I18n.locale = if params[:locale].present? && I18n.available_locales.map(&:to_s).include?(params[:locale])
+                    params[:locale]
+                  elsif user_signed_in? && current_user.interface_language.present?
                     current_user.language_to_locale(current_user.interface_language)
-    else
+                  else
                     locale_from_http_header || locale_from_ip || I18n.default_locale
-    end
+                  end
   end
 
   def locale_from_http_header
