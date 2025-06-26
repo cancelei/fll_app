@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "English Grammar Feedback" %></title>
+    <title><%= content_for(:title) || t('app.title') %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -82,21 +82,33 @@
       <nav class="container mx-auto px-4 py-3 flex items-center justify-between">
         <div class="flex items-center">
           <a href="<%= root_path %>" class="flex items-center">
-            <span class="text-blue-600 font-bold text-xl">English Grammar Feedback</span>
+            <span class="text-blue-600 font-bold text-xl"><%= t('app.title') %></span>
           </a>
         </div>
         
         <div class="hidden md:flex items-center space-x-6">
-          <%= link_to "Home", root_path, class: "text-gray-600 hover:text-blue-600 transition duration-300" %>
-          <%= link_to "Prompts", prompts_path, class: "text-gray-600 hover:text-blue-600 transition duration-300" %>
-          <%= link_to "History", user_responses_path, class: "text-gray-600 hover:text-blue-600 transition duration-300" %>
-          <%= link_to "Mistake Journal", mistake_journal_path, class: "text-gray-600 hover:text-blue-600 transition duration-300" %>
+          <%= link_to t('nav.home'), root_path, class: "text-gray-600 hover:text-blue-600 transition duration-300" %>
+          <%= link_to t('nav.prompts'), prompts_path, class: "text-gray-600 hover:text-blue-600 transition duration-300" %>
+          <%= link_to t('nav.history'), user_responses_path, class: "text-gray-600 hover:text-blue-600 transition duration-300" %>
+          <%= link_to t('nav.mistake_journal'), mistake_journal_path, class: "text-gray-600 hover:text-blue-600 transition duration-300" %>
           
           <% if user_signed_in? %>
-            <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "text-gray-600 hover:text-blue-600 transition duration-300" %>
+            <div class="relative" data-controller="dropdown">
+              <button class="flex items-center text-gray-600 hover:text-blue-600 transition duration-300 focus:outline-none" data-action="click->dropdown#toggle" id="desktop-menu-btn">
+                <span class="mr-1"><%= current_user.username %></span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden" data-dropdown-target="menu" id="desktop-menu">
+                <%= link_to t('nav.profile'), edit_user_registration_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+                <%= link_to t('nav.preferences'), edit_user_preferences_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+                <%= link_to t('nav.sign_out'), destroy_user_session_path, data: { turbo_method: :delete }, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+              </div>
+            </div>
           <% else %>
-            <%= link_to "Sign in", new_user_session_path, class: "text-gray-600 hover:text-blue-600 transition duration-300" %>
-            <%= link_to "Sign up", new_user_registration_path, class: "bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition duration-300" %>
+            <%= link_to t('nav.sign_in'), new_user_session_path, class: "text-gray-600 hover:text-blue-600 transition duration-300" %>
+            <%= link_to t('nav.sign_up'), new_user_registration_path, class: "bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition duration-300" %>
           <% end %>
         </div>
         
@@ -136,16 +148,27 @@
         <% end %>
         
         <div class="flex flex-col space-y-3 py-2">
-          <%= link_to "Home", root_path, class: "text-gray-600 hover:text-blue-600 transition duration-300" %>
-          <%= link_to "Prompts", prompts_path, class: "text-gray-600 hover:text-blue-600 transition duration-300" %>
-          <%= link_to "History", user_responses_path, class: "text-gray-600 hover:text-blue-600 transition duration-300" %>
-          <%= link_to "Mistake Journal", mistake_journal_path, class: "text-gray-600 hover:text-blue-600 transition duration-300" %>
+          <%= link_to t('nav.home'), root_path, class: "text-gray-600 hover:text-blue-600 transition duration-300" %>
+          <%= link_to t('nav.prompts'), prompts_path, class: "text-gray-600 hover:text-blue-600 transition duration-300" %>
+          <%= link_to t('nav.history'), user_responses_path, class: "text-gray-600 hover:text-blue-600 transition duration-300" %>
+          <%= link_to t('nav.mistake_journal'), mistake_journal_path, class: "text-gray-600 hover:text-blue-600 transition duration-300" %>
           
           <% if user_signed_in? %>
-            <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "text-gray-600 hover:text-blue-600 transition duration-300" %>
+            <div class="border-t border-gray-100 pt-3 mt-2">
+              <h3 class="text-sm font-medium text-gray-500 mb-2"><%= current_user.username %></h3>
+              <%= link_to edit_user_registration_path, class: "text-gray-600 hover:text-blue-600 transition duration-300 flex items-center" do %>
+                <i class="fas fa-user-edit mr-2"></i> <%= t('nav.profile') %>
+              <% end %>
+              <%= link_to edit_user_preferences_path, class: "text-gray-600 hover:text-blue-600 transition duration-300 flex items-center mt-2" do %>
+                <i class="fas fa-cog mr-2"></i> <%= t('nav.preferences') %>
+              <% end %>
+              <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "text-gray-600 hover:text-blue-600 transition duration-300 flex items-center mt-2" do %>
+                <i class="fas fa-sign-out-alt mr-2"></i> <%= t('nav.sign_out') %>
+              <% end %>
+            </div>
           <% else %>
-            <%= link_to "Sign in", new_user_session_path, class: "text-gray-600 hover:text-blue-600 transition duration-300" %>
-            <%= link_to "Sign up", new_user_registration_path, class: "text-gray-600 hover:text-blue-600 transition duration-300" %>
+            <%= link_to t('nav.sign_in'), new_user_session_path, class: "text-gray-600 hover:text-blue-600 transition duration-300" %>
+            <%= link_to t('nav.sign_up'), new_user_registration_path, class: "text-gray-600 hover:text-blue-600 transition duration-300" %>
           <% end %>
         </div>
       </div>
@@ -172,22 +195,22 @@
       <nav class="mobile-nav">
         <%= link_to root_path, class: "mobile-nav-item #{current_page?(root_path) ? 'active' : ''}" do %>
           <i class="fas fa-home mobile-nav-icon"></i>
-          <span>Home</span>
+          <span><%= t('nav.home_short') %></span>
         <% end %>
         
         <%= link_to prompts_path, class: "mobile-nav-item #{controller_name == 'prompts' ? 'active' : ''}" do %>
           <i class="fas fa-microphone mobile-nav-icon"></i>
-          <span>Practice</span>
+          <span><%= t('nav.practice') %></span>
         <% end %>
         
         <%= link_to user_responses_path, class: "mobile-nav-item #{controller_name == 'user_responses' ? 'active' : ''}" do %>
           <i class="fas fa-history mobile-nav-icon"></i>
-          <span>History</span>
+          <span><%= t('nav.history_short') %></span>
         <% end %>
         
         <%= link_to mistake_journal_path, class: "mobile-nav-item #{current_page?(mistake_journal_path) ? 'active' : ''}" do %>
           <i class="fas fa-book mobile-nav-icon"></i>
-          <span>Journal</span>
+          <span><%= t('nav.journal_short') %></span>
         <% end %>
       </nav>
     </div>
@@ -195,8 +218,8 @@
     <footer class="bg-white border-t border-gray-200 py-6 mt-12 md:block hidden">
       <div class="container mx-auto px-4">
         <div class="text-center text-gray-500 text-sm">
-          <p>&copy; <%= Time.current.year %> English Grammar Feedback App</p>
-          <p class="mt-1">Built with Ruby on Rails, Hotwire, and Tailwind CSS</p>
+          <p>&copy; <%= Time.current.year %> <%= t('app.title') %></p>
+          <p class="mt-1"><%= t('app.footer_text') %></p>
         </div>
       </div>
     </footer>

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
   get "mistake_journal/index"
+
+  # User preferences routes
+  get "user_preferences/edit", as: :edit_user_preferences
+  patch "user_preferences/update", as: :update_user_preferences
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Root route

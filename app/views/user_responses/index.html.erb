@@ -1,8 +1,8 @@
 <div class="container mx-auto px-4 py-8">
   <div class="max-w-3xl mx-auto">
     <div class="mb-8">
-      <h1 class="text-3xl font-bold text-gray-900 mb-2">Speaking History</h1>
-      <p class="text-gray-600">Review your previous speaking attempts and track your progress</p>
+      <h1 class="text-3xl font-bold text-gray-900 mb-2"><%= t('user_responses.title') %></h1>
+      <p class="text-gray-600"><%= t('user_responses.description', default: 'Review your previous speaking attempts and track your progress') %></p>
     </div>
     
     <div id="user-responses" class="space-y-4">
@@ -15,7 +15,7 @@
         <% if @user_responses.respond_to?(:total_pages) && @user_responses.total_pages > 1 %>
           <div class="mt-8 flex justify-center">
             <nav class="inline-flex rounded-md shadow">
-              <%= link_to_prev_page @user_responses, 'Previous', class: 'px-3 py-2 rounded-l-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50' %>
+              <%= link_to_prev_page @user_responses, t('common.previous', default: 'Previous'), class: 'px-3 py-2 rounded-l-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50' %>
               <% @user_responses.total_pages.times do |i| %>
                 <% page = i + 1 %>
                 <% if page == @user_responses.current_page %>
@@ -24,20 +24,20 @@
                   <%= link_to page, user_responses_path(page: page), class: 'px-3 py-2 border border-gray-300 bg-white text-gray-700 hover:bg-gray-50' %>
                 <% end %>
               <% end %>
-              <%= link_to_next_page @user_responses, 'Next', class: 'px-3 py-2 rounded-r-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50' %>
+              <%= link_to_next_page @user_responses, t('common.next', default: 'Next'), class: 'px-3 py-2 rounded-r-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50' %>
             </nav>
           </div>
         <% end %>
       <% else %>
         <div class="bg-white rounded-lg shadow-md p-6 text-center">
-          <p class="text-gray-600 mb-4">You haven't recorded any responses yet.</p>
-          <%= link_to "Start Speaking Practice", prompts_path, class: "bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-300" %>
+          <p class="text-gray-600 mb-4"><%= t('user_responses.empty') %></p>
+          <%= link_to t('user_responses.start_practicing'), prompts_path, class: "bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-300" %>
         </div>
       <% end %>
     </div>
     
     <div class="mt-8">
-      <%= link_to "Back to Home", root_path, class: "text-blue-600 hover:text-blue-800 font-medium" %>
+      <%= link_to t('common.back_to_home'), root_path, class: "text-blue-600 hover:text-blue-800 font-medium" %>
     </div>
   </div>
 </div>

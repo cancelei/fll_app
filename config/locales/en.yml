@@ -29,3 +29,193 @@
 
 en:
   hello: "Hello world"
+  
+  # Application-wide translations
+  app:
+    title: "English Grammar Feedback"
+    footer_text: "Built with Ruby on Rails, Hotwire, and Tailwind CSS"
+  
+  # Common elements used throughout the application
+  common:
+    back_to_home: "Back to Home"
+    loading: "Loading..."
+    submit: "Submit"
+    cancel: "Cancel"
+    save: "Save"
+    edit: "Edit"
+    delete: "Delete"
+    confirm: "Confirm"
+    yes: "Yes"
+    no: "No"
+    success: "Success!"
+    error: "Error"
+    required: "Required"
+    optional: "Optional"
+    previous: "Previous"
+    next: "Next"
+    or: "Or"
+  
+  # Navigation
+  nav:
+    home: "Home"
+    home_short: "Home"
+    prompts: "Prompts"
+    practice: "Practice"
+    history: "History"
+    history_short: "History"
+    mistake_journal: "Mistake Journal"
+    journal_short: "Journal"
+    profile: "Edit Profile"
+    preferences: "Learning Preferences"
+    sign_in: "Sign in"
+    sign_up: "Sign up"
+    sign_out: "Sign out"
+  
+  # User Preferences
+  user_preferences:
+    title: "Learning Preferences"
+    language_settings: "App Language Settings"
+    language_help: "These settings help you learn English by providing guidance in your native language."
+    interface_language: "Interface Language"
+    interface_language_help: "The language used for app navigation and instructions"
+    learning_from: "Learning From"
+    learning_from_help: "Your native language (we'll provide grammar explanations comparing to English)"
+    save: "Save Preferences"
+    cancel: "Cancel"
+    updated: "Your preferences have been updated successfully."
+    error: "There was a problem updating your preferences."
+  
+  # Profile
+  profile:
+    edit: "Edit Profile"
+    username: "Username"
+    email: "Email"
+    password: "Password"
+    password_confirmation: "Password Confirmation"
+    current_password: "Current Password"
+    update: "Update Profile"
+    cancel: "Cancel"
+    updated: "Your profile has been updated successfully."
+    error: "There was a problem updating your profile."
+    delete_account: "Delete Account"
+    delete_confirmation: "Are you sure you want to delete your account? This action cannot be undone."
+    delete_warning: "Once you delete your account, all of your data will be permanently removed."
+    
+  # Prompts
+  prompts:
+    title: "Speaking Prompts"
+    description: "Select a prompt to practice your spoken English grammar"
+    none_available: "No prompts available yet. Please check back later."
+    try: "Try this prompt"
+    category: "Category"
+    difficulty: "Difficulty"
+    dev_note_title: "Development Note"
+    dev_note_description: "No prompts in the database. You can create some using the Rails console:"
+    
+  # User Responses
+  user_responses:
+    title: "Practice History"
+    description: "Review your speaking practice history and grammar feedback"
+    empty_state: "You haven't completed any speaking practice yet."
+    start_practicing: "Start Speaking Practice"
+    view_details: "View Details"
+    grammar_feedback: "Grammar Feedback"
+    review_description: "Review your speaking response and grammar corrections"
+    prompt: "Prompt"
+    audio_response: "Your Audio Response"
+    audio_not_supported: "Your browser does not support the audio element."
+    no_audio: "No audio recording available"
+    transcript: "Transcript"
+    no_transcript: "No transcript available"
+    grammar_score: "Grammar Score"
+    not_available: "N/A"
+    fluency: "Fluency"
+    not_rated: "Not rated"
+    grammar_corrections: "Grammar Corrections"
+    no_corrections: "No grammar corrections needed"
+    overall_feedback: "Overall Feedback"
+    try_another: "Try Another Prompt"
+    view_history: "View History"
+    your_response: "Your Response"
+    feedback: "Feedback"
+    retry: "Try Again"
+    corrections: "Corrections"
+    
+  # Corrections
+  corrections:
+    mistake: "Mistake"
+    correction: "Correction"
+    tip: "Tip"
+    
+  # Mistake Journal
+  mistake_journal:
+    title: "Mistake Journal"
+    description: "Track patterns in your grammar mistakes to focus your learning"
+    current_mistakes: "Mistakes to Work On"
+    resolved_mistakes: "Resolved Mistakes"
+    no_mistakes: "No Grammar Mistakes Recorded Yet"
+    start_practicing_description: "Start practicing with speaking exercises to track your grammar mistakes and progress."
+    mark_resolved: "Mark as resolved"
+    mark_unresolved: "Mark as unresolved"
+    occurrence_count: "Occurrences"
+    
+  # Grammar Feedback
+  grammar:
+    verb_tense: "Verb Tense"
+    word_order: "Word Order"
+    subject_verb_agreement: "Subject-Verb Agreement"
+    error_highlight: "Error"
+    correction: "Correction"
+    tip: "Tip"
+    excellent: "Excellent"
+    good: "Good"
+    fair: "Fair"
+    needs_work: "Needs work"
+    
+  # Devise Authentication
+  devise:
+    sessions:
+      new:
+        title: "Log in"
+        email: "Email"
+        password: "Password"
+        remember_me: "Remember me"
+        submit: "Log in"
+    registrations:
+      new:
+        title: "Sign up"
+        email: "Email"
+        email_placeholder: "email@example.com"
+        password: "Password"
+        minimum_password_length: "%{count} characters minimum"
+        password_confirmation: "Password confirmation"
+        submit: "Sign up"
+      edit:
+        title: "Edit Account"
+        email: "Email"
+        password: "Password"
+        password_help: "Leave blank if you don't want to change it"
+        current_password: "Current password"
+        current_password_help: "We need your current password to confirm your changes"
+        update: "Update"
+        cancel_account: "Cancel my account"
+        unhappy: "Unhappy?"
+        confirm: "Are you sure?"
+    passwords:
+      new:
+        title: "Forgot your password?"
+        email: "Email"
+        submit: "Send me reset password instructions"
+      edit:
+        title: "Change your password"
+        new_password: "New password"
+        confirm_new_password: "Confirm new password"
+        submit: "Change my password"
+    shared:
+      links:
+        log_in: "Log in"
+        sign_up: "Sign up"
+        forgot_password: "Forgot your password?"
+        no_confirmation: "Didn't receive confirmation instructions?"
+        no_unlock: "Didn't receive unlock instructions?"
+        sign_in_with: "Sign in with %{provider}"

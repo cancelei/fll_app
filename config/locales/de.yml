@@ -1,0 +1,191 @@
+de:
+  hello: "Hallo Welt"
+  
+  # Application-wide translations
+  app:
+    title: "Englische Grammatik-Feedback"
+    footer_text: "Erstellt mit Ruby on Rails, Hotwire und Tailwind CSS"
+  
+  # Common elements used throughout the application
+  common:
+    back_to_home: "Zurück zur Startseite"
+    loading: "Wird geladen..."
+    submit: "Absenden"
+    cancel: "Abbrechen"
+    save: "Speichern"
+    edit: "Bearbeiten"
+    delete: "Löschen"
+    confirm: "Bestätigen"
+    yes: "Ja"
+    no: "Nein"
+    success: "Erfolg!"
+    error: "Fehler"
+    required: "Erforderlich"
+    optional: "Optional"
+    previous: "Zurück"
+    next: "Weiter"
+  
+  # Navigation
+  nav:
+    home: "Startseite"
+    home_short: "Start"
+    prompts: "Übungen"
+    practice: "Üben"
+    history: "Verlauf"
+    history_short: "Verlauf"
+    mistake_journal: "Fehlerjournal"
+    journal_short: "Journal"
+    profile: "Profil bearbeiten"
+    preferences: "Lerneinstellungen"
+    sign_in: "Anmelden"
+    sign_up: "Registrieren"
+    sign_out: "Abmelden"
+  
+  # User Preferences
+  user_preferences:
+    title: "Lerneinstellungen"
+    language_settings: "Spracheinstellungen"
+    language_help: "Diese Einstellungen helfen Ihnen, Englisch zu lernen, indem sie Anleitung in Ihrer Muttersprache bieten."
+    interface_language: "Oberflächensprache"
+    interface_language_help: "Die Sprache, die für die Navigation und Anweisungen der App verwendet wird"
+    learning_from: "Lerne Von"
+    learning_from_help: "Ihre Muttersprache (wir werden grammatikalische Erklärungen im Vergleich zu Englisch liefern)"
+    save: "Einstellungen Speichern"
+    cancel: "Abbrechen"
+    updated: "Ihre Einstellungen wurden erfolgreich aktualisiert."
+    error: "Es gab ein Problem beim Aktualisieren Ihrer Einstellungen."
+  
+  # Profile
+  profile:
+    edit: "Profil bearbeiten"
+    username: "Benutzername"
+    email: "E-Mail"
+    password: "Passwort"
+    password_confirmation: "Passwort bestätigen"
+    current_password: "Aktuelles Passwort"
+    update: "Profil aktualisieren"
+    cancel: "Abbrechen"
+    updated: "Ihr Profil wurde erfolgreich aktualisiert."
+    error: "Es gab ein Problem beim Aktualisieren Ihres Profils."
+    delete_account: "Konto löschen"
+    delete_confirmation: "Sind Sie sicher, dass Sie Ihr Konto löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden."
+    delete_warning: "Wenn Sie Ihr Konto löschen, werden alle Ihre Daten dauerhaft entfernt."
+    
+  # Prompts
+  prompts:
+    title: "Sprechübungen"
+    description: "Wählen Sie eine Übung aus, um Ihre englische Grammatik beim Sprechen zu trainieren"
+    none_available: "Noch keine Übungen verfügbar. Bitte schauen Sie später wieder vorbei."
+    try: "Diese Übung ausprobieren"
+    category: "Kategorie"
+    difficulty: "Schwierigkeitsgrad"
+    dev_note_title: "Entwicklungshinweis"
+    dev_note_description: "Keine Übungen in der Datenbank. Sie können einige mit der Rails-Konsole erstellen:"
+    
+  # User Responses
+  user_responses:
+    title: "Übungshistorie"
+    description: "Überprüfen Sie Ihre Sprechübungshistorie und Grammatik-Feedback"
+    empty_state: "Sie haben noch keine Sprechübung abgeschlossen."
+    start_practicing: "Sprechübung beginnen"
+    view_details: "Details anzeigen"
+    grammar_feedback: "Grammatik-Feedback"
+    review_description: "Überprüfen Sie Ihre gesprochene Antwort und Grammatikkorrekturen"
+    prompt: "Aufgabe"
+    audio_response: "Ihre Audio-Antwort"
+    audio_not_supported: "Ihr Browser unterstützt das Audio-Element nicht."
+    no_audio: "Keine Audioaufnahme verfügbar"
+    transcript: "Transkript"
+    no_transcript: "Kein Transkript verfügbar"
+    grammar_score: "Grammatikpunktzahl"
+    not_available: "N/V"
+    fluency: "Flüssigkeit"
+    not_rated: "Nicht bewertet"
+    grammar_corrections: "Grammatikkorrekturen"
+    no_corrections: "Keine Grammatikkorrekturen erforderlich"
+    overall_feedback: "Gesamtfeedback"
+    try_another: "Andere Aufgabe versuchen"
+    view_history: "Historie anzeigen"
+    your_response: "Ihre Antwort"
+    corrections: "Korrekturen"
+    feedback: "Feedback"
+    retry: "Erneut versuchen"
+    
+  # Corrections
+  corrections:
+    mistake: "Fehler"
+    correction: "Korrektur"
+    tip: "Tipp"
+    
+  # Mistake Journal
+  mistake_journal:
+    title: "Fehlerjournal"
+    description: "Verfolge Muster in deinen Grammatikfehlern, um dein Lernen zu fokussieren"
+    current_mistakes: "Fehler zum Bearbeiten"
+    resolved_mistakes: "Gelöste Fehler"
+    no_mistakes: "Noch keine Grammatikfehler aufgezeichnet"
+    start_practicing_description: "Beginne mit Sprechübungen, um deine Grammatikfehler und deinen Fortschritt zu verfolgen."
+    mark_resolved: "Als behoben markieren"
+    mark_unresolved: "Als nicht behoben markieren"
+    occurrence_count: "Vorkommen"
+    
+  # Grammar Feedback
+  grammar:
+    verb_tense: "Zeitform"
+    word_order: "Wortstellung"
+    subject_verb_agreement: "Subjekt-Verb-Kongruenz"
+    error_highlight: "Fehler"
+    correction: "Korrektur"
+    tip: "Tipp"
+    excellent: "Ausgezeichnet"
+    good: "Gut"
+    fair: "Mittelmäßig"
+    needs_work: "Verbesserungsbedürftig"
+    
+  # Devise Authentication
+  devise:
+    sessions:
+      new:
+        title: "Anmelden"
+        email: "E-Mail"
+        password: "Passwort"
+        remember_me: "Angemeldet bleiben"
+        submit: "Anmelden"
+    registrations:
+      new:
+        title: "Registrieren"
+        email: "E-Mail"
+        email_placeholder: "email@beispiel.de"
+        password: "Passwort"
+        minimum_password_length: "Mindestens %{count} Zeichen"
+        password_confirmation: "Passwort bestätigen"
+        submit: "Registrieren"
+      edit:
+        title: "Konto bearbeiten"
+        email: "E-Mail"
+        password: "Passwort"
+        password_help: "Leer lassen, wenn Sie es nicht ändern möchten"
+        current_password: "Aktuelles Passwort"
+        current_password_help: "Wir benötigen Ihr aktuelles Passwort, um Ihre Änderungen zu bestätigen"
+        update: "Aktualisieren"
+        cancel_account: "Konto löschen"
+        unhappy: "Unzufrieden?"
+        confirm: "Sind Sie sicher?"
+    passwords:
+      new:
+        title: "Passwort vergessen?"
+        email: "E-Mail"
+        submit: "Anweisungen zum Zurücksetzen des Passworts senden"
+      edit:
+        title: "Passwort ändern"
+        new_password: "Neues Passwort"
+        confirm_new_password: "Neues Passwort bestätigen"
+        submit: "Mein Passwort ändern"
+    shared:
+      links:
+        log_in: "Anmelden"
+        sign_up: "Registrieren"
+        forgot_password: "Passwort vergessen?"
+        no_confirmation: "Keine Bestätigungsanweisungen erhalten?"
+        no_unlock: "Keine Entsperranweisungen erhalten?"
+        sign_in_with: "Mit %{provider} anmelden"

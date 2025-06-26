@@ -1,53 +1,53 @@
 <div class="container mx-auto px-4 py-8">
   <div class="max-w-3xl mx-auto">
     <div class="mb-8">
-      <h1 class="text-3xl font-bold text-gray-900 mb-2">Grammar Feedback</h1>
-      <p class="text-gray-600">Review your speaking response and grammar corrections</p>
+      <h1 class="text-3xl font-bold text-gray-900 mb-2"><%= t('user_responses.grammar_feedback') %></h1>
+      <p class="text-gray-600"><%= t('user_responses.review_description') %></p>
     </div>
     
     <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-      <h2 class="text-xl font-semibold mb-4">Prompt:</h2>
+      <h2 class="text-xl font-semibold mb-4"><%= t('user_responses.prompt') %>:</h2>
       <div class="p-4 bg-blue-50 rounded-md mb-6">
         <p class="text-lg"><%= @user_response.prompt.content %></p>
       </div>
       
       <div class="mb-6">
-        <h3 class="text-lg font-semibold mb-2">Your Audio Response:</h3>
+        <h3 class="text-lg font-semibold mb-2"><%= t('user_responses.audio_response') %>:</h3>
         <% if @user_response.audio.attached? %>
           <audio controls class="w-full">
             <source src="<%= rails_blob_path(@user_response.audio) %>" type="audio/webm">
-            Your browser does not support the audio element.
+            <%= t('user_responses.audio_not_supported') %>
           </audio>
         <% else %>
-          <p class="text-gray-600 italic">No audio recording available</p>
+          <p class="text-gray-600 italic"><%= t('user_responses.no_audio') %></p>
         <% end %>
       </div>
       
       <div class="mb-6">
-        <h3 class="text-lg font-semibold mb-2">Transcript:</h3>
+        <h3 class="text-lg font-semibold mb-2"><%= t('user_responses.transcript') %>:</h3>
         <div class="p-4 bg-gray-50 rounded-md">
           <% if @user_response.transcript.present? %>
-            <p class="text-lg"><%= raw @user_response.transcript_with_highlights.gsub('<error>', '<span class="bg-red-200 text-red-800 px-1 rounded">').gsub('</error>', '</span>') %></p>
+            <p class="text-lg"><%= raw @user_response.transcript_with_highlights.gsub('<e>', '<span class="bg-red-200 text-red-800 px-1 rounded">').gsub('</e>', '</span>') %></p>
           <% else %>
-            <p class="text-gray-600 italic">No transcript available</p>
+            <p class="text-gray-600 italic"><%= t('user_responses.no_transcript') %></p>
           <% end %>
         </div>
       </div>
       
       <div class="mb-6">
-        <h3 class="text-lg font-semibold mb-2">Grammar Score:</h3>
+        <h3 class="text-lg font-semibold mb-2"><%= t('user_responses.grammar_score') %>:</h3>
         <div class="flex items-center">
           <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
-            <span class="text-xl font-bold text-blue-800"><%= @user_response.grammar_score || 'N/A' %></span>
+            <span class="text-xl font-bold text-blue-800"><%= @user_response.grammar_score || t('user_responses.not_available') %></span>
           </div>
           <div>
-            <p class="font-medium">Fluency: <span class="text-gray-700"><%= @user_response.fluency || 'Not rated' %></span></p>
+            <p class="font-medium"><%= t('user_responses.fluency') %>: <span class="text-gray-700"><%= @user_response.fluency || t('user_responses.not_rated') %></span></p>
           </div>
         </div>
       </div>
       
       <div>
-        <h3 class="text-lg font-semibold mb-2">Grammar Corrections:</h3>
+        <h3 class="text-lg font-semibold mb-2"><%= t('user_responses.grammar_corrections') %>:</h3>
         <% if @user_response.corrections.any? %>
           <div class="space-y-4">
             <% @user_response.corrections.each do |correction| %>
@@ -55,21 +55,21 @@
             <% end %>
           </div>
         <% else %>
-          <p class="text-gray-600 italic">No grammar corrections needed</p>
+          <p class="text-gray-600 italic"><%= t('user_responses.no_corrections') %></p>
         <% end %>
       </div>
       
       <% if @user_response.overall_feedback.present? %>
         <div class="mt-6 p-4 bg-green-50 rounded-md">
-          <h3 class="text-lg font-semibold mb-2">Overall Feedback:</h3>
+          <h3 class="text-lg font-semibold mb-2"><%= t('user_responses.overall_feedback') %>:</h3>
           <p><%= @user_response.overall_feedback %></p>
         </div>
       <% end %>
     </div>
     
     <div class="flex justify-between mt-8">
-      <%= link_to "Try Another Prompt", prompts_path, class: "bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-md transition duration-300" %>
-      <%= link_to "View History", user_responses_path, class: "text-blue-600 hover:text-blue-800 font-medium" %>
+      <%= link_to t('user_responses.try_another'), prompts_path, class: "bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-md transition duration-300" %>
+      <%= link_to t('user_responses.view_history'), user_responses_path, class: "text-blue-600 hover:text-blue-800 font-medium" %>
     </div>
   </div>
 </div>

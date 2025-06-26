@@ -1,0 +1,191 @@
+pt:
+  hello: "Olá mundo"
+  
+  # Application-wide translations
+  app:
+    title: "Feedback de Gramática Inglesa"
+    footer_text: "Construído com Ruby on Rails, Hotwire e Tailwind CSS"
+  
+  # Common elements used throughout the application
+  common:
+    back_to_home: "Voltar para o Início"
+    loading: "Carregando..."
+    submit: "Enviar"
+    cancel: "Cancelar"
+    save: "Salvar"
+    edit: "Editar"
+    delete: "Excluir"
+    confirm: "Confirmar"
+    yes: "Sim"
+    no: "Não"
+    success: "Sucesso!"
+    error: "Erro"
+    required: "Obrigatório"
+    optional: "Opcional"
+    previous: "Anterior"
+    next: "Próximo"
+  
+  # Navigation
+  nav:
+    home: "Início"
+    home_short: "Início"
+    prompts: "Exercícios"
+    practice: "Praticar"
+    history: "Histórico"
+    history_short: "Histórico"
+    mistake_journal: "Diário de Erros"
+    journal_short: "Diário"
+    profile: "Editar Perfil"
+    preferences: "Preferências de Aprendizado"
+    sign_in: "Entrar"
+    sign_up: "Cadastrar"
+    sign_out: "Sair"
+  
+  # User Preferences
+  user_preferences:
+    title: "Preferências de Aprendizado"
+    language_settings: "Configurações de Idioma"
+    language_help: "Essas configurações ajudam você a aprender inglês fornecendo orientação em seu idioma nativo."
+    interface_language: "Idioma da Interface"
+    interface_language_help: "O idioma usado para navegação e instruções do aplicativo"
+    learning_from: "Aprendendo A Partir De"
+    learning_from_help: "Seu idioma nativo (forneceremos explicações gramaticais comparando com o inglês)"
+    save: "Salvar Preferências"
+    cancel: "Cancelar"
+    updated: "Suas preferências foram atualizadas com sucesso."
+    error: "Houve um problema ao atualizar suas preferências."
+  
+  # Profile
+  profile:
+    edit: "Editar Perfil"
+    username: "Nome de Usuário"
+    email: "E-mail"
+    password: "Senha"
+    password_confirmation: "Confirmação de Senha"
+    current_password: "Senha Atual"
+    update: "Atualizar Perfil"
+    cancel: "Cancelar"
+    updated: "Seu perfil foi atualizado com sucesso."
+    error: "Houve um problema ao atualizar seu perfil."
+    delete_account: "Excluir Conta"
+    delete_confirmation: "Tem certeza de que deseja excluir sua conta? Esta ação não pode ser desfeita."
+    delete_warning: "Depois de excluir sua conta, todos os seus dados serão removidos permanentemente."
+    
+  # Prompts
+  prompts:
+    title: "Exercícios de Fala"
+    description: "Selecione um exercício para praticar sua gramática inglesa falada"
+    none_available: "Nenhum exercício disponível ainda. Por favor, volte mais tarde."
+    try: "Tentar este exercício"
+    category: "Categoria"
+    difficulty: "Dificuldade"
+    dev_note_title: "Nota de Desenvolvimento"
+    dev_note_description: "Não há exercícios no banco de dados. Você pode criar alguns usando o console do Rails:"
+    
+  # User Responses
+  user_responses:
+    title: "Histórico de Prática"
+    description: "Revise seu histórico de prática de fala e feedback gramatical"
+    empty_state: "Você ainda não completou nenhuma prática de fala."
+    start_practicing: "Iniciar Prática de Fala"
+    view_details: "Ver Detalhes"
+    grammar_feedback: "Feedback Gramatical"
+    review_description: "Revise sua resposta falada e as correções gramaticais"
+    prompt: "Pergunta"
+    audio_response: "Sua Resposta de Áudio"
+    audio_not_supported: "Seu navegador não suporta o elemento de áudio."
+    no_audio: "Nenhuma gravação de áudio disponível"
+    transcript: "Transcrição"
+    no_transcript: "Nenhuma transcrição disponível"
+    grammar_score: "Pontuação Gramatical"
+    not_available: "N/D"
+    fluency: "Fluência"
+    not_rated: "Não avaliado"
+    grammar_corrections: "Correções Gramaticais"
+    no_corrections: "Nenhuma correção gramatical necessária"
+    overall_feedback: "Feedback Geral"
+    try_another: "Tentar Outra Pergunta"
+    view_history: "Ver Histórico"
+    your_response: "Sua Resposta"
+    corrections: "Correções"
+    feedback: "Feedback"
+    retry: "Tentar Novamente"
+    
+  # Corrections
+  corrections:
+    mistake: "Erro"
+    correction: "Correção"
+    tip: "Dica"
+    
+  # Mistake Journal
+  mistake_journal:
+    title: "Diário de Erros"
+    description: "Acompanhe padrões nos seus erros gramaticais para focar seu aprendizado"
+    current_mistakes: "Erros para Trabalhar"
+    resolved_mistakes: "Erros Resolvidos"
+    no_mistakes: "Ainda não há erros gramaticais registrados"
+    start_practicing_description: "Comece a praticar com exercícios de fala para acompanhar seus erros gramaticais e seu progresso."
+    mark_resolved: "Marcar como resolvido"
+    mark_unresolved: "Marcar como não resolvido"
+    occurrence_count: "Ocorrências"
+    
+  # Grammar Feedback
+  grammar:
+    verb_tense: "Tempo Verbal"
+    word_order: "Ordem das Palavras"
+    subject_verb_agreement: "Concordância Sujeito-Verbo"
+    error_highlight: "Erro"
+    correction: "Correção"
+    tip: "Dica"
+    excellent: "Excelente"
+    good: "Bom"
+    fair: "Regular"
+    needs_work: "Precisa melhorar"
+    
+  # Devise Authentication
+  devise:
+    sessions:
+      new:
+        title: "Entrar"
+        email: "Email"
+        password: "Senha"
+        remember_me: "Lembrar-me"
+        submit: "Entrar"
+    registrations:
+      new:
+        title: "Cadastrar"
+        email: "Email"
+        email_placeholder: "email@exemplo.com"
+        password: "Senha"
+        minimum_password_length: "Mínimo de %{count} caracteres"
+        password_confirmation: "Confirmação de senha"
+        submit: "Cadastrar"
+      edit:
+        title: "Editar Conta"
+        email: "Email"
+        password: "Senha"
+        password_help: "Deixe em branco se não quiser alterar"
+        current_password: "Senha atual"
+        current_password_help: "Precisamos da sua senha atual para confirmar as alterações"
+        update: "Atualizar"
+        cancel_account: "Cancelar minha conta"
+        unhappy: "Insatisfeito?"
+        confirm: "Tem certeza?"
+    passwords:
+      new:
+        title: "Esqueceu sua senha?"
+        email: "Email"
+        submit: "Enviar instruções para redefinir senha"
+      edit:
+        title: "Alterar sua senha"
+        new_password: "Nova senha"
+        confirm_new_password: "Confirmar nova senha"
+        submit: "Alterar minha senha"
+    shared:
+      links:
+        log_in: "Entrar"
+        sign_up: "Cadastrar"
+        forgot_password: "Esqueceu sua senha?"
+        no_confirmation: "Não recebeu as instruções de confirmação?"
+        no_unlock: "Não recebeu as instruções de desbloqueio?"
+        sign_in_with: "Entrar com %{provider}"

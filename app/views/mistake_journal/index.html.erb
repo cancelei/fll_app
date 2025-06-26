@@ -2,8 +2,8 @@
   <div class="max-w-4xl mx-auto">
     <!-- Header Section -->
     <div class="mb-6 sm:mb-8">
-      <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Mistake Journal</h1>
-      <p class="text-sm sm:text-base text-gray-600">Track patterns in your grammar mistakes to focus your learning</p>
+      <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2"><%= t('mistake_journal.title') %></h1>
+      <p class="text-sm sm:text-base text-gray-600"><%= t('mistake_journal.description') %></p>
     </div>
     
     <% if @total_mistakes > 0 %>
@@ -14,8 +14,8 @@
       <div class="sm:hidden mb-6">
         <select id="mobile-tab-selector" class="block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm" 
                 onchange="showTab(this.value)">
-          <option value="current">Mistakes to Work On (<%= @total_mistakes - @resolved_count %>)</option>
-          <option value="resolved">Resolved Mistakes (<%= @resolved_count %>)</option>
+          <option value="current"><%= t('mistake_journal.current_mistakes') %> (<%= @total_mistakes - @resolved_count %>)</option>
+          <option value="resolved"><%= t('mistake_journal.resolved_mistakes') %> (<%= @resolved_count %>)</option>
         </select>
       </div>
       
@@ -24,10 +24,10 @@
         <div class="border-b border-gray-200">
           <nav class="-mb-px flex space-x-8" aria-label="Tabs">
             <button onclick="showTab('current')" id="tab-current" class="tab-button border-blue-500 text-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
-              Mistakes to Work On (<%= @total_mistakes - @resolved_count %>)
+              <%= t('mistake_journal.current_mistakes') %> (<%= @total_mistakes - @resolved_count %>)
             </button>
             <button onclick="showTab('resolved')" id="tab-resolved" class="tab-button border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
-              Resolved Mistakes (<%= @resolved_count %>)
+              <%= t('mistake_journal.resolved_mistakes') %> (<%= @resolved_count %>)
             </button>
           </nav>
         </div>
@@ -48,7 +48,7 @@
     
     <!-- Footer Navigation -->
     <div class="mt-8">
-      <%= link_to "Back to Home", root_path, class: "text-blue-600 hover:text-blue-800 font-medium text-sm sm:text-base" %>
+      <%= link_to t('common.back_to_home'), root_path, class: "text-blue-600 hover:text-blue-800 font-medium text-sm sm:text-base" %>
     </div>
   </div>
 </div>

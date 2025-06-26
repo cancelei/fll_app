@@ -75,3 +75,6 @@ gem "kaminari", "~> 1.2"
 
 # Authentication
 gem "devise", "~> 4.9"
+
+# Geocoding for IP-based locale detection
+gem "geocoder", "~> 1.8"
