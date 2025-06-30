@@ -31,10 +31,15 @@ class AudioProcessingService
       temp_file.rewind
 
       # Call OpenAI's transcription API
+      # Using English language and temperature 0 for more deterministic output
+      # - language: "en" ensures English-focused transcription
+      # - temperature: 0 provides most literal output with minimal paraphrasing
       response = @client.audio.transcribe(
         parameters: {
           model: "whisper-1",
-          file: File.open(temp_file.path)
+          file: File.open(temp_file.path),
+          language: "en",
+          temperature: 0
         }
       )
 
