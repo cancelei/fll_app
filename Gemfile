@@ -78,3 +78,5 @@ gem "devise", "~> 4.9"
 
 # Geocoding for IP-based locale detection
 gem "geocoder", "~> 1.8"
+gem "assemblyai", "~> 1.0"
+gem "httplog", "~> 1.0"

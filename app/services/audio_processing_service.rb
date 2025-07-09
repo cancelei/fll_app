@@ -1,10 +1,10 @@
-require "openai"
+require "assemblyai"
 
 class AudioProcessingService
   def initialize(audio_blob, user_response)
     @audio_blob = audio_blob
     @user_response = user_response
-    @client = OpenAI::Client.new(access_token: ENV["OPENAI_API"])
+    @client = AssemblyAI::Client.new(api_key: ENV["ASSEMBLY_API"])
   end
 
   def process
@@ -30,22 +30,25 @@ class AudioProcessingService
       temp_file.write(audio_file)
       temp_file.rewind
 
-      # Call OpenAI's transcription API
-      # Using English language and temperature 0 for more deterministic output
-      # - language: "en" ensures English-focused transcription
-      # - temperature: 0 provides most literal output with minimal paraphrasing
-      response = @client.audio.transcribe(
-        parameters: {
-          model: "whisper-1",
-          file: File.open(temp_file.path),
-          language: "en",
-          temperature: 0
-        }
+      # Upload the audio file to AssemblyAI using the correct API pattern
+      uploaded_file = @client.files.upload(file: temp_file.path)
+
+      # Create a transcription request with the uploaded audio URL
+      # Using English language for language learning focus
+      transcript = @client.transcripts.transcribe(
+        audio_url: uploaded_file.upload_url,
+        language_code: "en",
+        punctuate: true,
+        format_text: true
       )
 
+      # The transcribe method already polls for completion, so we don't need to manually poll
       # Update the user response with the transcription
-      transcript = response["text"]
-      @user_response.update(transcript: transcript)
+      if transcript.status == "completed"
+        @user_response.update(transcript: transcript.text)
+      else
+        raise "Transcription failed with status: #{transcript.status}"
+      end
 
     rescue => e
       # Log the error and use a fallback transcript
