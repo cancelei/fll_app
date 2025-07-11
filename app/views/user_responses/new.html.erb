@@ -15,21 +15,22 @@
         </div>
       </div>
       
-      <div data-controller="recording" class="space-y-6">
+      <div data-controller="recording" 
+           data-recording-start-text-value="<%= t('user_responses.start_recording') %>"
+           data-recording-in-progress-text-value="<%= t('user_responses.recording_in_progress') %>"
+           data-recording-processing-text-value="<%= t('user_responses.processing_response') %>"
+           data-recording-microphone-error-text-value="<%= t('user_responses.microphone_error') %>"
+           class="space-y-6">
         <div class="flex flex-col space-y-4">
-          <div class="flex space-x-4">
-            <button data-action="click->recording#startRecording" data-recording-target="startButton" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-300 flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+          <div class="flex justify-center">
+            <button 
+              data-action="click->recording#toggleRecording" 
+              data-recording-target="recordButton" 
+              class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300 flex items-center justify-center w-full max-w-md mx-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" viewBox="0 0 20 20" fill="currentColor">
                 <circle cx="10" cy="10" r="6" />
               </svg>
-              <%= t('user_responses.start_recording') %>
-            </button>
-            
-            <button data-action="click->recording#stopRecording" data-recording-target="stopButton" class="bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-md transition duration-300 flex items-center" disabled>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                <rect x="6" y="6" width="8" height="8" />
-              </svg>
-              <%= t('user_responses.stop_recording') %>
+              <span class="button-text"><%= t('user_responses.start_recording') %></span>
             </button>
           </div>
           
@@ -40,7 +41,6 @@
         
         <%= form_with(url: prompt_user_responses_path(@prompt), method: :post, data: { action: "submit->recording#submitForm" }) do |form| %>
           <%= form.hidden_field :audio_data, data: { recording_target: "audioData" } %>
-          <%= form.submit t('user_responses.submit_response'), class: "mt-6 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-md transition duration-300" %>
         <% end %>
       </div>
     </div>
