@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 2,
+  "dockerfileLines": [
+    "FROM ruby:3.2.1-slim",
+    "RUN apt-get update && apt-get install -y --no-install-recommends build-essential curl git libpq-dev nodejs npm",
+    "RUN npm install -g yarn",
+    "WORKDIR /app",
+    "COPY Gemfile Gemfile.lock .",
+    "RUN bundle install",
+    "COPY . .",
+    "RUN bin/rails assets:precompile",
+    "RUN chmod +x docker-entrypoint.sh",
+    "ENTRYPOINT [\"./docker-entrypoint.sh\"]"
+  ]
+}
