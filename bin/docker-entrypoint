@@ -8,6 +8,17 @@ fi
 
 # If running the rails server then create or migrate existing database
 if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
+  echo "=== DEBUGGING NETWORK CONNECTIVITY ==="
+  echo "Checking if srv-captain--fll-pg resolves..."
+  nslookup srv-captain--fll-pg || echo "DNS resolution failed"
+  
+  echo "Checking if PostgreSQL port responds..."
+  nc -zv srv-captain--fll-pg 5432 || echo "PostgreSQL connection failed"
+  
+  echo "Current DATABASE_URL (first 50 chars):"
+  echo "${DATABASE_URL:0:50}..."
+  
+  echo "=== ATTEMPTING DATABASE PREPARATION ==="
   ./bin/rails db:prepare
 fi
 
