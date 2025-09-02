@@ -14,11 +14,11 @@ Rails.application.routes.draw do
 
     # Prompts routes
     resources :prompts, only: [ :index, :show ] do
+      collection do
+        get :debug_seed
+      end
       resources :user_responses, only: [ :new, :create ]
     end
-    
-    # Temporary debug route
-    get "prompts/debug_seed", to: "prompts#debug_seed"
 
     # User responses routes
     resources :user_responses, only: [ :show, :index ]
