@@ -9,6 +9,19 @@ class PromptsController < ApplicationController
     # @prompt is set by the before_action
   end
 
+  # Temporary debugging method
+  def debug_seed
+    Rails.logger.info "=== MANUAL SEED DEBUG ==="
+    Rails.logger.info "Current prompts count: #{Prompt.count}"
+    
+    if Prompt.count == 0
+      Rails.logger.info "No prompts found, running seed..."
+      load Rails.root.join('db', 'seeds.rb')
+    end
+    
+    redirect_to prompts_path, notice: "Debug complete. Prompts: #{Prompt.count}"
+  end
+
   private
 
   def set_prompt

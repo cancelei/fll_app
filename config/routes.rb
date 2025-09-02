@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     resources :prompts, only: [ :index, :show ] do
       resources :user_responses, only: [ :new, :create ]
     end
+    
+    # Temporary debug route
+    get "prompts/debug_seed", to: "prompts#debug_seed"
 
     # User responses routes
     resources :user_responses, only: [ :show, :index ]
